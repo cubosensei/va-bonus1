@@ -6,12 +6,174 @@
 
   <!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+  <!-- D3 -->
+  <script type="text/javascript" src="libraries/d3/d3.min.js"></script>
+
+  <!-- Internal -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="container">
-    
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/img/sunrise.jpg">
+            <span class="card-title">Is it hot in here or it's just me?</span>
+          </div>
+          <div class="card-content">
+            <p>In the past years you may have heard about "global warming" and "climate change" which are two different concepts but are extremely related.</p>
+
+            <span class="card-title">Global Warming</span>
+            <p>Global warming refers to the upward temperature trend across the entire Earth since the early 20th century, and most notably since the late 1970s, due to the increase in fossil fuel emissions since the industrial revolution. Worldwide since 1880, the average surface temperature has gone up by about 0.8 °C (1.4 °F), relative to the mid-20th-century baseline (of 1951-1980). (<a href="https://climate.nasa.gov/resources/global-warming/" target="_blank">NASA</a>)</p>
+
+            <span class="card-title">Climate Change</span>
+            <p>Climate change refers to a broad range of global phenomena created predominantly by burning fossil fuels, which add heat-trapping gases to Earth’s atmosphere. These phenomena include the increased temperature trends described by global warming, but also encompass changes such as sea level rise; ice mass loss in Greenland, Antarctica, the Arctic and mountain glaciers worldwide; shifts in flower/plant blooming; and extreme weather events. (<a href="https://climate.nasa.gov/resources/global-warming/" target="_blank">NASA</a>)</p>
+
+            <p>The followng links provide more information about Climate Change and Global Warming presented by <a href="https://climate.nasa.gov/" target="_blank">NASA</a>.</p>
+          </div>
+          <div class="card-action">
+            <a href="https://climate.nasa.gov/evidence" class="btn blue" target="_blank"><i class="material-icons left">insert_link</i> Evidence</a>
+            <a href="https://climate.nasa.gov/causes" class="btn blue" target="_blank"><i class="material-icons left">insert_link</i> Causes</a>
+            <a href="https://climate.nasa.gov/effects" class="btn blue" target="_blank"><i class="material-icons left">insert_link</i> Effects</a>
+            <a href="https://climate.nasa.gov/solutions/resources" class="btn blue" target="_blank"><i class="material-icons left">insert_link</i> Solutions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card yellow lighten-4">
+          <div class="card-content">
+            <p><span class="badge"><i class="material-icons left">info</i></span>Pass your mouse over the graphics to see more information.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Seasonal Cycle Since 1880</span>
+            <div id="chart1" class="progress"><div class="indeterminate"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Global Mean Estimates (Land/Surface Air & Sea/Surface Water)</span>
+            <div id="chart2" class="progress"><div class="indeterminate"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Global Mean Estimates (Land/Surface Air)</span>
+            <div id="chart3" class="progress"><div class="indeterminate"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <hr>
+  
+  <div class="container">
+    <div class="row">
+      <h2 class="section-title">About the vis</h2>
+      <div class="col s12 m4">
+        <div class="card">
+          <div class="card-image red darken-3 noimage">
+            <span class="card-title">What</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="card">
+          <div class="card-image yellow darken-3 noimage">
+            <span class="card-title">Why</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="card">
+          <div class="card-image green darken-1 noimage">
+            <span class="card-title">How</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Insights</span>
+            <p>Lorem Ipsum</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="page-footer grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Visual Analytics</h5>
+          <p class="grey-text text-lighten-2">This visualization was developed for the <a href="http://johnguerra.co/classes/visual_analytics_fall_2018/" target="_blank">Visual Analytics</a> class (2018-20) at <a href="https://uniandes.edu.co/" target="_blank">Universidad de los Andes</a>.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Related Content</h5>
+          <ul>
+            <li><a href="#!">Slides</a></li>
+            <li><a href="https://github.com/cubosensei/va-bonus1" target="_blank">Source Code</a></li>
+            <li><a href="#!">Youtube Video</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright black">
+      <div class="container">
+      2018 MIT Licenced Content by <a href="http://www.manalco.co" target="_blank">Manuel Alvarado</a>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript">
+    //var body = d3.select(".container");
+    const datos1 = d3.csv("assets/data/ZonAnn.Ts.csv");
+
+    d3.select("#chart1")
+      .attr("class","");
+    d3.select("#chart2")
+      .attr("class","");
+    d3.select("#chart3")
+      .attr("class","");
+  </script>
 </body>

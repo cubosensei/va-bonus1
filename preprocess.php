@@ -24,7 +24,7 @@
     }
     fclose($handle);
 
-    $fp = fopen('results.json', 'w');
+    $fp = fopen('assets/data/land.json', 'w');
     fwrite($fp, json_encode($output));
     fclose($fp);
   }

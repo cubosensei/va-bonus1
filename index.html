@@ -226,6 +226,7 @@
 
     lines.enter()
       .append("path")
+        .datum(d => d)
         .attr("class", "line")
         .style("stroke", d => color(d.key))
         .attr("id", d => d.key)

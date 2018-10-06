@@ -188,12 +188,61 @@
     </div>
   </footer>
   <script type="text/javascript">
-    //var body = d3.select(".container");
-    const land = d3.csv("assets/data/GLB.Ts.csv");
+    //General
+    const margin = ({top: 20, right: 30, bottom: 30, left: 40});
+    const height = 500;
+    const width = d3.select("#chart1").node().getBoundingClientRect().width - margin.right - margin.left;
+
+    const land = d3.json("assets/data/land.json");
     const landOcean = d3.csv("assets/data/GLB.Ts+dSST.csv");
+
+    //BEGIN Chart1
+    var parseDate = d3.timeParse("%b %Y");
+    var x = d3.scaleTime().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+    var xAxis = d3.axisBottom(x).ticks(5);
+    var yAxis = d3.axisLeft(y).ticks(5);
+
+    var tempLine = d3.line()
+      .x(function(d) { return x(parseDate(d.date)); })
+      .y(function(d) { return y(d.temp); });
+
+    var svg1 = d3.select("#chart1")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    x.domain(d3.extent(land, function(d){
+      return parseDate(d.date);
+    }));
+    y.domain([0, (d3.max(land, function(d){
+      return d.temp;
+    }))]);
+
+    const lines = svg1.selectAll(".lines")
+      .data(land);
+
+    lines.enter()
+      .append("path")
+        .attr("class", "line")
+        .style("stroke", d => color(d.key))
+        .attr("id", d => d.key)
+        .attr("d", d => tempLine(d.values));
+    
+    svg1.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+    svg1.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
 
     d3.select("#chart1")
       .attr("class","");
+    // END Chart1
+
     d3.select("#chart2")
       .attr("class","");
     d3.select("#chart3")

@@ -7,20 +7,53 @@ This visualization is part of an activity for the [Visual Analitics class - Unia
 
 Graphics are interactive, hover the mouse over the dots to display more information and click on them to filtrate it.
 
-# Objective
+## Objective
 To generate an interactive visualization to present the temperature variations trend over the time since 1880 to the present that allows the user identify whether the global temperature mean is raising or not with the displayed information.
 
-# Used Technologies
+## Used Technologies
 * [D3](https://d3js.org/)
 * [Vega-Lite](https://vega.github.io/vega-lite/)
 * [Materialize CSS](https://materializecss.com)
 
-# Local execution
+## Local execution
 In order to execute the visualization locally you must have a local web server installed. Fow Windows it's recommended to use [1&1](https://www.1and1.com/digitalguide/server/tools/xampp-tutorial-create-your-own-local-test-server/) tutorial, [Gestiona tu Web](https://www.gestionatuweb.net/instalar-un-servidor-web-en-linux-para-pruebas-y-aprendizaje-con-xampp/) for Linux and [MAMP](https://documentation.mamp.info/en/MAMP-Mac/First-Steps/) for macOS.
 
-# Screenshots
+## Screenshots
 ![preview](/screenshot.PNG)
 ![preview](/screenshot2.PNG)
+
+# About the vis
+## What
+Dataset Type: Table
+
+Items: Global Means
+
+Attributes:
+1. Year (Ordered, Quantitative, Sequential)
+2. Date (Temporal)
+3. Season (Ordered, Ordinal, Cyclic)
+4. Mean (Ordered, Quantitative, Diverging)
+
+## Why
+* Summarize global mean temperature trend from 1880 to 2018. **(Summarize - Trends)**
+* Compare global mean temperature by month from 1880 to 2018. **(Compare - Features)**
+* Compare seasonal mean temperatures by year from 1880 to 2018. **(Compare - Features)**
+* Locate the mean temperature for a given year and month. **(Locate - Features)**
+
+## How
+**Global Mean Temperature Anomalies 1880-2018 uses:**
+Mark: Lines
+Channels:
+* [2,4] Position/Size.
+* [1] Color (saturation).
+
+
+**Seasonal Mean Temperature Anomalies uses:**
+Mark: Points
+Channels:
+* [1,4] Position.
+* [3] Color (hue).
+
 
 # Credits
 * This content is published with 2018 MIT licence by [Manuel Alvarado](http://www.manalco.co).

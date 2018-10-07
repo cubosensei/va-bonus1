@@ -12,6 +12,11 @@
   <!-- D3 -->
   <script type="text/javascript" src="libraries/d3/d3.min.js"></script>
 
+  <!-- VegaLite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@4.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.0-rc6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.19.2"></script>
+
   <!-- Internal -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -49,7 +54,7 @@
       <div class="col s12">
         <div class="card yellow lighten-4">
           <div class="card-content">
-            <p><span class="badge"><i class="material-icons left">info</i></span>Hover your mouse over the graphics to see more information.</p>
+            <p><span class="badge"><i class="material-icons left">warning</i></span>Hover your mouse over the graphics to see more information.</p>
           </div>
         </div>
       </div>
@@ -59,8 +64,9 @@
       <div class="col s12">
         <div class="card">
           <div class="card-content">
-            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Seasonal Cycle Since 1880</span>
+            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Temperature Variation 1880-2018</span>
             <div id="chart1" class="progress"><div class="indeterminate"></div></div>
+            <p>Global main temperature variation from january 1880 to august 2018.</p>
           </div>
         </div>
       </div>
@@ -70,30 +76,18 @@
       <div class="col s12">
         <div class="card">
           <div class="card-content">
-            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Global Mean (Land/Surface Air & Sea/Surface Water)</span>
+            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Seasonal Temperature Variation</span>
             <div id="chart2" class="progress"><div class="indeterminate"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Global Mean (Land/Surface Air)</span>
-            <div id="chart3" class="progress"><div class="indeterminate"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title"><span class="badge"><i class="material-icons left">insert_chart</i></span> Seasonal Temperature Anomaly (Land/Surface Air & Sea/Surface Water)</span>
-            <div id="chart4" class="progress"><div class="indeterminate"></div></div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card green lighten-4">
+                  <div class="card-content">
+                    <p><span class="badge"><i class="material-icons left">info</i></span>Seasons are separated by quarters so: DJF is winter, MAM is spring, JJA is summer and SON is fall.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>Global main seasonal temperature variation from january 1880 to august 2018.</p>
           </div>
         </div>
       </div>
@@ -116,8 +110,9 @@
             <p>Attributes: 
               <ol>
                 <li>Year (Ordered, Quantitative, Sequential)</li>
-                <li>Month (Ordered, Ordinal, Cyclic)</li>
-                <li>Mean (Ordered, Quantitative, Diverging)</li>
+                <li>Date (Temporal)</li>
+                <li>Season (Ordered, Ordinal, Cyclic)</li>
+                <li>Mean Variation (Ordered, Quantitative, Diverging)</li>
               </ol>
             </p>
           </div>
@@ -130,9 +125,9 @@
           </div>
           <div class="card-content">
             <ul class="browser-default">
-              <li>Summarize global mean temperature trends from 1880 to 2018. <b>(Summarize - Trends)</b></li>
-              <li>Compare global mean temperature by year from 1880 to 2018. <b>(Compare - Features)</b></li>
+              <li>Summarize global mean temperature trend from 1880 to 2018. <b>(Summarize - Trends)</b></li>
               <li>Compare global mean temperature by month from 1880 to 2018. <b>(Compare - Features)</b></li>
+              <li>Compare seasonal mean temperatures by year from 1880 to 2018. <b>(Compare - Features)</b></li>
               <li>Locate the mean temperature for a given year and month. <b>(Locate - Features)</b></li>
             </ul>
           </div>
@@ -144,8 +139,24 @@
             <span class="card-title">How</span>
           </div>
           <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+            <p><b>Temperature Variation 1880-2018</b> uses:
+              <ul>
+                <li>Mark: Line</li>
+                <li>Channels:
+                  <ul class="browser-default">
+                    <li>[2,4] Size.</li>
+                    <li>[1] Color (saturation).</li>
+                  </ul></li>
+              </ul></p>
+              <p><b>Seasonal Temperature Variation</b> uses:
+              <ul>
+                <li>Mark: Points</li>
+                <li>Channels:
+                  <ul class="browser-default">
+                    <li>[1,4] Position.</li>
+                    <li>[3] Color (hue).</li>
+                  </ul></li>
+              </ul></p>
           </div>
         </div>
       </div>
@@ -188,67 +199,51 @@
     </div>
   </footer>
   <script type="text/javascript">
-    //General
-    const margin = ({top: 20, right: 30, bottom: 30, left: 40});
-    const height = 500;
-    const width = d3.select("#chart1").node().getBoundingClientRect().width - margin.right - margin.left;
-
-    const land = d3.json("assets/data/land.json");
-    const landOcean = d3.csv("assets/data/GLB.Ts+dSST.csv");
-
     //BEGIN Chart1
-    var parseDate = d3.timeParse("%b %Y");
-    var x = d3.scaleTime().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
-    var xAxis = d3.axisBottom(x).ticks(5);
-    var yAxis = d3.axisLeft(y).ticks(5);
+    var chart1 = {
+      "data": {"url": "assets/data/land-ocean.json"},
+      "mark": {"type":"line", "point":{"color":"black"}},
+      "width": d3.select("#chart1").node().getBoundingClientRect().width-110,
+      "height": 500,
+      "encoding": {
+        "x": {"field": "date", "type": "temporal", "timeUnit": "yearmonth"},
+        "y": {"field": "temp", "type": "quantitative"},
+        "color": {"field": "year", "type": "quantitative",
+          "scale": {
+              "domain": [1880,2018],
+              "range": ["#5AC3AE","#006A55"]
+            }
+        }
+      }
+    }
 
-    var tempLine = d3.line()
-      .x(function(d) { return x(parseDate(d.date)); })
-      .y(function(d) { return y(d.temp); });
-
-    var svg1 = d3.select("#chart1")
-      .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    x.domain(d3.extent(land, function(d){
-      return parseDate(d.date);
-    }));
-    y.domain([0, (d3.max(land, function(d){
-      return d.temp;
-    }))]);
-
-    const lines = svg1.selectAll(".lines")
-      .data(land);
-
-    lines.enter()
-      .append("path")
-        .datum(d => d)
-        .attr("class", "line")
-        .style("stroke", d => color(d.key))
-        .attr("id", d => d.key)
-        .attr("d", d => tempLine(d.values));
-    
-    svg1.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-    svg1.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
+    vegaEmbed("#chart1", chart1);
 
     d3.select("#chart1")
       .attr("class","");
     // END Chart1
 
+    //BEGIN Chart2
+    var chart2 = {
+      "data": {"url": "assets/data/land-ocean-season.json"},
+      "mark": "point",
+      "width": d3.select("#chart2").node().getBoundingClientRect().width-110,
+      "height": 500,
+      "encoding": {
+        "x": {"field": "year", "type": "temporal", "timeUnit": "year"},
+        "y": {"field": "temp", "type": "quantitative"},
+        "color": {"field": "season", "type": "nominal",
+          "scale": {
+            "domain": ["DJF","MAM","JJA","SON"]
+          }
+        }
+      }
+    }
+
+    vegaEmbed("#chart2", chart2);
+
     d3.select("#chart2")
       .attr("class","");
-    d3.select("#chart3")
-      .attr("class","");
-    d3.select("#chart4")
-      .attr("class","");
+    // END Chart2
   </script>
 </body>

@@ -1,6 +1,6 @@
 <?php
   $output = array();
-  $months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  $months = ["DJF","MAM","JJA","SON"];
   if (($handle = fopen("assets/data/GLB.Ts+dSST.csv", "r")) !== FALSE) {
     $header = array();
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -16,8 +16,8 @@
         foreach ($d as $key => $value) {
           if(in_array($key, $months) && $value != "***"){
             $output[] = array(
-              "year" => $d["Year"],
-              "date" => $key." 1 ".$d["Year"],
+              "year" => $d["Year"]."-01-01T05:00:00.000Z",
+              "season" => $key,
               "temp" => sanitize($value)
             );
           }
@@ -26,7 +26,7 @@
     }
     fclose($handle);
 
-    $fp = fopen('assets/data/land-ocean.json', 'w');
+    $fp = fopen('assets/data/land-ocean-season.json', 'w');
     fwrite($fp, json_encode($output));
     fclose($fp);
   }

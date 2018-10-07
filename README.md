@@ -58,7 +58,7 @@ Channels:
 ## Insights
 Although it's obvious that the global temperature is raising, with the first graphic there seems to be a periodic interval cycle of about 4-6 years between the peaks in the anomalies.
 
-The temperature raising could be related to the begining of experimentation with fosile combustibles that started by 1920 and began its mass use by 1950 approximately.
+The temperature raising could be related to the beginning of experimentation with fossile combustibles that started by 1920 and began its mass use by 1950 approximately.
 
 There is a rising peak during the first world war between 1914-1918 and the first significant temperature rising is between 1936-1945 that could be related to second world war that lasted between 1939-1945.
 

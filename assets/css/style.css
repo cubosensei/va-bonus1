@@ -24,3 +24,8 @@ div.vega-actions{
 div.vega-actions a{
   margin-right: 15px;
 }
+
+hr{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}

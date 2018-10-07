@@ -54,7 +54,7 @@
       <div class="col s12">
         <div class="card yellow lighten-4">
           <div class="card-content">
-            <p><span class="badge"><i class="material-icons left">warning</i></span>Hover your mouse over the graphics to see more information.</p>
+            <p><span class="badge"><i class="material-icons left">warning</i></span>Hover your mouse over the dots in the graphics to see more information, click on them to filter.</p>
           </div>
         </div>
       </div>
@@ -203,7 +203,10 @@
     var chart1 = {
       "data": {"url": "assets/data/land-ocean.json"},
       "selection": {
-        "pts": {"type": "single"}
+        "click": {
+          "encodings": ["color"], 
+          "type": "multi"
+        }
       },
       "mark": {"type":"line", "point":{"color":"black"}},
       "width": d3.select("#chart1").node().getBoundingClientRect().width-110,
@@ -217,11 +220,10 @@
           "scale": {
             "domain": [1880,2018],
             "range": ["#5AC3AE","#006A55"]
-          },
-          "selection": "pts",
-          "value": "grey"
+          }
         }
-      }
+      },
+      "transform": [{"filter": {"selection": "click"}}]
     }
 
     vegaEmbed("#chart1", chart1);
@@ -237,6 +239,10 @@
         "paintbrush": {
           "type": "multi",
           "on": "mouseover", "empty": "none"
+        },
+        "click": {
+          "encodings": ["color"], 
+          "type": "multi"
         }
       },
       "mark": "point",
@@ -256,7 +262,8 @@
           },
           "value": 50
         }
-      }
+      },
+      "transform": [{"filter": {"selection": "click"}}]
     }
 
     vegaEmbed("#chart2", chart2);

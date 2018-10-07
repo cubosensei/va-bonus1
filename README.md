@@ -11,7 +11,6 @@ Graphics are interactive, hover the mouse over the dots to display more informat
 To generate an interactive visualization to present the temperature variations trend over the time since 1880 to the present that allows the user identify whether the global temperature mean is raising or not with the displayed information.
 
 ## Used Technologies
-* [D3](https://d3js.org/)
 * [Vega-Lite](https://vega.github.io/vega-lite/)
 * [Materialize CSS](https://materializecss.com)
 
@@ -63,6 +62,11 @@ The temperature raising could be related to the beginning of experimentation wit
 There is a rising peak during the first world war between 1914-1918 and the first significant temperature rising is between 1936-1945 that could be related to second world war that lasted between 1939-1945.
 
 The season with the more variation in temperature is winter, in general there are years that have the most colder and the most warmer winter. Most colder season is winter 1917 and the warmer season is winter 2016.
+
+# Related Content
+* [Visualization](https://cubosensei.github.io/va-bonus1/)
+* [Slides](https://docs.google.com/presentation/d/1DJ-lzqUFOmEpsSPBdQ3JL_iuvUI01MhJJm_WfuR4TO8/edit?usp=sharing)
+* [YouTube Video](https://youtu.be/HNUhd1befmI)
 
 
 # Credits

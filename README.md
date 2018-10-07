@@ -19,8 +19,8 @@ To generate an interactive visualization to present the temperature variations t
 In order to execute the visualization locally you must have a local web server installed. Fow Windows it's recommended to use [1&1](https://www.1and1.com/digitalguide/server/tools/xampp-tutorial-create-your-own-local-test-server/) tutorial, [Gestiona tu Web](https://www.gestionatuweb.net/instalar-un-servidor-web-en-linux-para-pruebas-y-aprendizaje-con-xampp/) for Linux and [MAMP](https://documentation.mamp.info/en/MAMP-Mac/First-Steps/) for macOS.
 
 # Screenshots
-![preview](/screenshot.png)
-![preview](/screenshot2.png)
+![preview](/screenshot.PNG)
+![preview](/screenshot2.PNG)
 
 # Credits
 * This content is published with 2018 MIT licence by [Manuel Alvarado](http://www.manalco.co).

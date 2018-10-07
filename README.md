@@ -55,6 +55,16 @@ Channels:
 * [3] Color (hue).
 
 
+## Insights
+Although it's obvious that the global temperature is raising, with the first graphic there seems to be a periodic interval cycle of about 4-6 years between the peaks in the anomalies.
+
+The temperature raising could be related to the begining of experimentation with fosile combustibles that started by 1920 and began its mass use by 1950 approximately.
+
+There is a rising peak during the first world war between 1914-1918 and the first significant temperature rising is between 1936-1945 that could be related to second world war that lasted between 1939-1945.
+
+The season with the more variation in temperature is winter, in general there are years that have the most colder and the most warmer winter. Most colder season is winter 1917 and the warmer season is winter 2016.
+
+
 # Credits
 * This content is published with 2018 MIT licence by [Manuel Alvarado](http://www.manalco.co).
 * Data by [NASA's GISTEMP](https://data.giss.nasa.gov/gistemp/).

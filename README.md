@@ -3,7 +3,7 @@
 
 Global warming refers to the upward temperature trend across the entire Earth since the early 20th century, and most notably since the late 1970s, due to the increase in fossil fuel emissions since the industrial revolution. Worldwide since 1880, the average surface temperature has gone up by about 0.8 °C (1.4 °F), relative to the mid-20th-century baseline (of 1951-1980). [(NASA)](https://climate.nasa.gov/resources/global-warming/)
 
-This visualization is part of an activity for the [Visual Analitics class - Uniandes 2018-20](http://johnguerra.co/classes/visual_analytics_fall_2018/). Data was taken from [NASA's GISTEMP](https://data.giss.nasa.gov/gistemp/) site and preprocessed with "preprocess.php" and "preprocess-season.php" to create a json file to work with. The graphics present the temperature anomalies since 1880 to present by year-month and by season.
+This visualization is part of an activity for the [Visual Analytics class - Uniandes 2018-20](http://johnguerra.co/classes/visual_analytics_fall_2018/). Data was taken from [NASA's GISTEMP](https://data.giss.nasa.gov/gistemp/) site and preprocessed with "preprocess.php" and "preprocess-season.php" to create a json file to work with. The graphics present the temperature anomalies since 1880 to present by year-month and by season.
 
 Graphics are interactive, hover the mouse over the dots to display more information and click on them to filtrate it.
 
